@@ -27,8 +27,20 @@ CREATE TABLE Tbl_MaterialPriceList (
 );
 
 CREATE TABLE Tbl_GemPriceList (
+    ID INT IDENTITY(1,1) PRIMARY KEY,
+    Origin NVARCHAR(100),
+    CaratWeight FLOAT,
+    Color NVARCHAR(50),
+    Cut NVARCHAR(50),
+    Clarity NVARCHAR(50),
+    Price FLOAT,
+	EffDate DATETIME,
+	Size FLOAT
+);
+
+CREATE TABLE Tbl_Gem (
     GemID NVARCHAR(8) PRIMARY KEY,
-    GemCode NVARCHAR(50),
+    GemName NVARCHAR(50),
     Polish NVARCHAR(50),
     Symmetry NVARCHAR(50),
     Fluorescence NVARCHAR(50),
@@ -37,9 +49,7 @@ CREATE TABLE Tbl_GemPriceList (
     Color NVARCHAR(50),
     Cut NVARCHAR(50),
     Clarity NVARCHAR(50),
-    Shape NVARCHAR(50),
-    Price FLOAT,
-    EffDate DATETIME
+    Shape NVARCHAR(50)
 );
 
 CREATE TABLE Tbl_ProductCategory (
@@ -72,7 +82,8 @@ CREATE TABLE Tbl_Customer (
     Email NVARCHAR(100),
     PhoneNumber NVARCHAR(10),
     Address NVARCHAR(200),
-    Spending FLOAT,
+    Ranking NVARCHAR(10),
+	DiscountRate FLOAT,
     Status BIT,
     FOREIGN KEY (AccountID) REFERENCES Tbl_Account(AccountID) ON DELETE SET NULL
 );
@@ -91,15 +102,13 @@ CREATE TABLE Tbl_Product (
     Description NVARCHAR(255),
     CategoryID NVARCHAR(8),
     MaterialCost FLOAT,
+	GemCost FLOAT,
     ProductionCost FLOAT,
     PriceRate FLOAT,
     ProductSize INT,
-    PriceSize FLOAT,
-    GemID NVARCHAR(8) UNIQUE,
     Image NVARCHAR(255),
     Status BIT,
     FOREIGN KEY (CategoryID) REFERENCES Tbl_ProductCategory(CategoryID) ON DELETE CASCADE,
-    FOREIGN KEY (GemID) REFERENCES Tbl_GemPriceList(GemID) ON DELETE CASCADE
 );
 
 CREATE TABLE Tbl_ProductMaterial (
@@ -109,6 +118,15 @@ CREATE TABLE Tbl_ProductMaterial (
     PRIMARY KEY (ProductID, MaterialID),
     FOREIGN KEY (ProductID) REFERENCES Tbl_Product(ProductID) ON DELETE CASCADE,
     FOREIGN KEY (MaterialID) REFERENCES Tbl_MaterialCategory(MaterialID) ON DELETE CASCADE
+);
+
+-- Tbl_ProductGem
+CREATE TABLE Tbl_ProductGem (
+    ProductID NVARCHAR(8),
+    GemID NVARCHAR(8),
+    PRIMARY KEY (ProductID, GemID),
+    FOREIGN KEY (ProductID) REFERENCES Tbl_Product(ProductID) ON DELETE CASCADE,
+    FOREIGN KEY (GemID) REFERENCES Tbl_Gem(GemID) ON DELETE CASCADE
 );
 
 CREATE TABLE Tbl_Order (
@@ -162,5 +180,5 @@ CREATE TABLE Tbl_DiamondGradingReport (
     GemID NVARCHAR(8) UNIQUE,
     GenerateDate DATETIME,
     Image NVARCHAR(255),
-    FOREIGN KEY (GemID) REFERENCES Tbl_GemPriceList(GemID) ON DELETE CASCADE
+    FOREIGN KEY (GemID) REFERENCES Tbl_Gem(GemID) ON DELETE CASCADE
 );
