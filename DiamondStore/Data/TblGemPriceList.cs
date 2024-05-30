@@ -5,15 +5,7 @@ namespace DiamondStore.Data;
 
 public partial class TblGemPriceList
 {
-    public string GemId { get; set; } = null!;
-
-    public string? GemCode { get; set; }
-
-    public string? Polish { get; set; }
-
-    public string? Symmetry { get; set; }
-
-    public string? Fluorescence { get; set; }
+    public int Id { get; set; }
 
     public string? Origin { get; set; }
 
@@ -25,13 +17,9 @@ public partial class TblGemPriceList
 
     public string? Clarity { get; set; }
 
-    public string? Shape { get; set; }
-
     public double? Price { get; set; }
 
     public DateTime? EffDate { get; set; }
 
-    public virtual TblDiamondGradingReport? TblDiamondGradingReport { get; set; }
-
-    public virtual TblProduct? TblProduct { get; set; }
+    public double? Size { get; set; }
 }

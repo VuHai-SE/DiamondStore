@@ -23,7 +23,9 @@ public partial class TblCustomer
 
     public string? Address { get; set; }
 
-    public double? Spending { get; set; }
+    public string? Ranking { get; set; }
+
+    public double? DiscountRate { get; set; }
 
     public bool? Status { get; set; }
 

@@ -13,5 +13,5 @@ public partial class TblDiamondGradingReport
 
     public string? Image { get; set; }
 
-    public virtual TblGemPriceList? Gem { get; set; }
+    public virtual TblGem? Gem { get; set; }
 }

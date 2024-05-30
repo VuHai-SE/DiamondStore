@@ -17,15 +17,13 @@ public partial class TblProduct
 
     public double? MaterialCost { get; set; }
 
+    public double? GemCost { get; set; }
+
     public double? ProductionCost { get; set; }
 
     public double? PriceRate { get; set; }
 
     public int? ProductSize { get; set; }
-
-    public double? PriceSize { get; set; }
-
-    public string? GemId { get; set; }
 
     public string? Image { get; set; }
 
@@ -33,9 +31,9 @@ public partial class TblProduct
 
     public virtual TblProductCategory? Category { get; set; }
 
-    public virtual TblGemPriceList? Gem { get; set; }
-
     public virtual ICollection<TblOrderDetail> TblOrderDetails { get; set; } = new List<TblOrderDetail>();
 
     public virtual ICollection<TblProductMaterial> TblProductMaterials { get; set; } = new List<TblProductMaterial>();
+
+    public virtual ICollection<TblGem> Gems { get; set; } = new List<TblGem>();
 }
