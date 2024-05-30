@@ -11,7 +11,7 @@ public partial class TblProductMaterial
 
     public double? Weight { get; set; }
 
-    public virtual TblMaterialPriceList Material { get; set; } = null!;
+    public virtual TblMaterialCategory Material { get; set; } = null!;
 
     public virtual TblProduct Product { get; set; } = null!;
 }

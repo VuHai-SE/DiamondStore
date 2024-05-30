@@ -5,13 +5,11 @@ namespace DiamondStore.Data;
 
 public partial class TblMaterialPriceList
 {
-    public string MaterialId { get; set; } = null!;
-
-    public string? MaterialName { get; set; }
+    public string? MaterialId { get; set; }
 
     public double? UnitPrice { get; set; }
 
     public DateTime? EffDate { get; set; }
 
-    public virtual ICollection<TblProductMaterial> TblProductMaterials { get; set; } = new List<TblProductMaterial>();
+    public virtual TblMaterialCategory? Material { get; set; }
 }

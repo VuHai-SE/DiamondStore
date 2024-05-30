@@ -11,7 +11,7 @@ public partial class TblOrderDetail
 
     public string? ProductId { get; set; }
 
-    public string? CustomizedSize { get; set; }
+    public int? CustomizedSize { get; set; }
 
     public double? CustomizedAmount { get; set; }
 

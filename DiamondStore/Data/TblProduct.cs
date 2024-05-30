@@ -21,9 +21,9 @@ public partial class TblProduct
 
     public double? PriceRate { get; set; }
 
-    public string? ProductSize { get; set; }
+    public int? ProductSize { get; set; }
 
-    public string? PriceSize { get; set; }
+    public double? PriceSize { get; set; }
 
     public string? GemId { get; set; }
 
